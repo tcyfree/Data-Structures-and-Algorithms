@@ -48,3 +48,84 @@ function insertionSort($arr)
 
     return $arr;
 }
+
+/**
+ * 快速排序
+ * @param array $array
+ * @return array
+ */
+function quickSort($arr)
+{
+    //先判断是否需要继续进行
+    $length = count($arr);
+    if ($length <= 1) {
+        return $arr;
+    }
+
+    //写法1，选择一个标尺,通常选择第一个元素
+    $base_num = $arr[0];
+
+    //写法2，随机选择一个值作为标尺
+//    $arr = swap_arr($arr,0, mt_rand()%$length);
+//    $base_num = $arr[0];
+    //初始化
+    $left = array();//小于标尺的
+    $right = array();//大于标尺的
+
+    for ($i = 1; $i < $length; $i++) {
+        if ($base_num > $arr[$i]) {
+            $left[] = $arr[$i];
+        } else {
+            $right[] = $arr[$i];
+        }
+    }
+
+    //递归调用并记录
+    $left = quickSort($left);
+    $right = quickSort($right);
+
+    //合并
+    return array_merge($left, array($base_num), $right);
+}
+/**
+ * 快速排序
+ * @param array $array
+ * @return array
+ */
+function quickSort2($arr)
+{
+    //先判断是否需要继续进行
+    $length = count($arr);
+    if( $length <= 15 ){
+        $arr = insertionSort($arr);
+        return $arr;
+    }
+    if ($length <= 1) {
+        return $arr;
+    }
+
+    //写法1，选择一个标尺,通常选择第一个元素
+//    $base_num = $arr[0];
+
+    //写法2，随机选择一个值作为标尺
+    $arr = swap_arr($arr,0, mt_rand()%$length);
+    $base_num = $arr[0];
+    //初始化
+    $left = array();//小于标尺的
+    $right = array();//大于标尺的
+
+    for ($i = 1; $i < $length; $i++) {
+        if ($base_num > $arr[$i]) {
+            $left[] = $arr[$i];
+        } else {
+            $right[] = $arr[$i];
+        }
+    }
+
+    //递归调用并记录
+    $left = quickSort($left);
+    $right = quickSort($right);
+
+    //合并
+    return array_merge($left, array($base_num), $right);
+}

@@ -67,6 +67,21 @@ function swap($arr,$a)
 
     return $arr;
 }
+/**
+ * 功能：交换数组中两键值对的值
+ * @param $arr
+ * @param $a
+ * @param $b
+ * @return mixed
+ */
+function swap_arr($arr,$a,$b)
+{
+    $temp = $arr[$a];//将a变量赋给临时变量
+    $arr[$a] = $arr[$b];//然后将b变量赋给a变量
+    $arr[$b] = $temp;//然后将临时变量temp赋给b变量
+
+    return $arr;
+}
 function testSort($sortName, $arr)
 {
 
@@ -82,8 +97,8 @@ function testSort($sortName, $arr)
     $totaltime = ($endtime - $begintime);
     $processTime = number_format($totaltime, 7);
     echo $sortName.':'.$processTime.'s'.'<br />';
-    print_r($arr);
-    echo '<br />';
+//    print_r($arr);
+//    echo '<br />';
     return $arr;
 }
 
