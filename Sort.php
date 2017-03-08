@@ -52,6 +52,20 @@ function insertionSort($arr)
     return $arr;
 }
 
+/**1、寻找元素arr[i]合适的插入位置，用变量记录$arr[$i]的值
+ * 2、要是在0~j有比$arr[$i]的值大，将此值后移一个索引
+ * 3、将最终j的位置作为$arr[$i]的位置赋值
+ * @param $arr
+ */
+function insertionSort_test($arr){
+    for($i=1; $i<count($arr); $i++){
+        $base = $arr[$i];
+        for($j=$i; $j>0 && $arr[$j-1]>$base; $j--){
+            $arr[$j] = $arr[$j-1];
+        }
+        $arr[$j] = $base;
+    }
+}
 /**
  * 快速排序
  * @param array $array
@@ -93,4 +107,36 @@ function quickSort($arr)
 
     //合并
     return array_merge($left, array($base_num), $right);
+}
+
+/**
+ * !!!!数组初始化和递归调用,return $arr
+ * @param $arr
+ * @return array|void
+ */
+function quickSort_test($arr)
+{
+    $length = count($arr);
+    if($length <= 1)
+    {
+        return $arr;
+    }
+
+    $base_num = $arr[0];
+    $left = array();
+    $right = array();
+
+    for($i=1; $i<$length; $i++)
+    {
+        if($arr[$i]<$base_num){
+            $left[] = $arr[$i];
+        }else{
+            $right[] = $arr[$i];
+        }
+    }
+
+    $left = quickSort_test($left);
+    $right = quickSort_test($right);
+
+    return array_merge($left,array($base_num),$right);
 }

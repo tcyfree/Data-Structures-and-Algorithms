@@ -11,7 +11,7 @@ $n = 100;
 $rangeL = 0;
 $rangeR = 9;
 $swapTimes = 10;
-$sortName1 = 'quickSort';
+$sortName1 = 'insertionSort_test';
 $sortName2 = 'insertionSort';
 
 echo '测试1 一般测试,完全随机'.'<br />';
