@@ -86,7 +86,7 @@ function quickSort($arr)
     //写法1，选择一个标尺,通常选择第一个元素
     $base_num = $arr[0];
 
-    //写法2，随机选择一个值作为标尺，提高递归树的平衡度
+    //写法2，随机选择一个值作为标尺,提高递归树的平衡度,减少递归层数
 //    $arr = swap_arr($arr,0, mt_rand()%$length);
 //    $base_num = $arr[0];
     //初始化
