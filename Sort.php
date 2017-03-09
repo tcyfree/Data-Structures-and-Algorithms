@@ -39,14 +39,14 @@ function insertionSort($arr)
 //                break;
 
         // 写法2,插入排序和选择排序最大区别是插入排序可以提前结束
-//        for( $j = $i ; $j > 0 && $arr[$j] < $arr[$j-1] ; $j -- )
-//            $arr = swap( $arr,$j);
+        for( $j = $i ; $j > 0 && $arr[$j] < $arr[$j-1] ; $j -- )
+            $arr = swap( $arr,$j);
         // 写法3,减少交换赋值次数（上两种写法交换一次会有三次赋值），提升性能
-        $e = $arr[$i];
-        for ($j = $i; $j > 0 && $arr[$j-1] > $e; $j--)
-            $arr[$j] = $arr[$j-1];
-        // j保存元素e应该插入的位置
-        $arr[$j] = $e;
+//        $e = $arr[$i];
+//        for ($j = $i; $j > 0 && $arr[$j-1] > $e; $j--)
+//            $arr[$j] = $arr[$j-1];
+//        // j保存元素e应该插入的位置
+//        $arr[$j] = $e;
     }
 
     return $arr;
