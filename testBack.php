@@ -47,3 +47,4 @@ echo '<br />';
 
 $sortName = 'insertionSort';
 print_r('判断一个数组是否有序：'.isSorted(testSort($sortName, $arr2)));
+
