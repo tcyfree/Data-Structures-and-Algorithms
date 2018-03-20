@@ -1,7 +1,10 @@
 <?php
 require_once "Helper.php";
 /**
- * 选择排序：每次找剩下最小元素
+ * 选择排序：每次找剩下最小元素，每次交换一对元素。
+ *
+ * @param $arr
+ * @return mixed
  */
 function selectionSort($arr){
 
@@ -12,19 +15,21 @@ function selectionSort($arr){
             if( $arr[$j] < $arr[$minIndex] )
                 $minIndex = $j;
         //交换
-        $temp = $arr[$i];
-        $arr[$i] = $arr[$minIndex];
-        $arr[$minIndex] = $temp;
+        swap($arr[$minIndex],$arr[$i]);
     }
 
     return $arr;
 }
+
 /**
- * 插入排序：寻找元素arr[i]合适的插入位置，使索引数组索引为[i]之前的元素有序
+ * 插入排序：寻找元素arr[i]合适的插入位置，使索引数组中索引为[i]之前的元素有序
  * 插入排序的时间复杂度分析。
  * 在最坏情况下，数组完全逆序，插入第2个元素时要考察前1个元素，插入第3个元素时，要考虑前2个元素，……，插入第N个元素，要考虑前 N - 1 个元素。
  * 因此，最坏情况下的比较次数是 1 + 2 + 3 + ... + (N - 1)，等差数列求和，结果为 N^2 / 2，所以最坏情况下的复杂度为 O(N^2)。
  * 最好情况下，数组已经是有序的，每插入一个元素，只需要考查前一个元素，因此最好情况下，插入排序的时间复杂度为O(N)。
+ *
+ * @param $arr
+ * @return mixed
  */
 function insertionSort($arr)
 {
@@ -40,7 +45,7 @@ function insertionSort($arr)
 
         // 写法2,插入排序和选择排序最大区别是插入排序可以提前结束
         for( $j = $i ; $j > 0 && $arr[$j] < $arr[$j-1] ; $j -- )
-            $arr = swap( $arr,$j);
+                swap( $arr[$j-1],$arr[$j]);
         // 写法3,减少交换赋值次数（上两种写法交换一次会有三次赋值），提升性能
 //        $e = $arr[$i];
 //        for ($j = $i; $j > 0 && $arr[$j-1] > $e; $j--)
