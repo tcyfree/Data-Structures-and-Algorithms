@@ -6,11 +6,26 @@
  * Time: 12:27
  */
 require_once "Sort.php";
+
+/**
+ * 只有引用才能改变原理数组中的值
+ *
+ * @param $x
+ * @param $y
+ */
+function swap(&$x, &$y) {
+    $t = $x;
+    $x = $y;
+    $y = $t;
+}
+
+
 /**
  * 功能：生成有n个元素的随机数组,每个元素的随机范围为[$rangeL, $rangeR]
  * 知识点：rand() 函数生成随机整数。
  * 提示：如果您想要一个介于 10 和 100 之间（包括 10 和 100）的随机整数，请使用 rand (10,100)。
  * 提示：mt_rand() 函数是产生随机值的更好选择，返回结果的速度是 rand() 函数的 4 倍。
+ *
  * @param $n
  * @param $rangeL
  * @param $rangeR
@@ -33,6 +48,7 @@ function generateRandomArray($n, $rangeL, $rangeR)
 
 /**
  * 功能：生成几乎有序的数组
+ *
  * @param $n
  * @param $swapTimes
  * @return mixed
@@ -53,35 +69,15 @@ function generateNearlyOrderedArray($n, $swapTimes){
     }
     return $arr;
 }
+
 /**
- * 功能：交换数组中两相邻键值对的值
+ * 1.根据排序算法和测试数据调用对应的算法函数
+ * 2.记录排序时间
+ *
+ * @param $sortName
  * @param $arr
- * @param $a
  * @return mixed
  */
-function swap($arr,$a)
-{
-    $temp = $arr[$a];//将a变量赋给临时变量
-    $arr[$a] = $arr[$a-1];//然后将b变量赋给a变量
-    $arr[$a-1] = $temp;//然后将临时变量temp赋给b变量
-
-    return $arr;
-}
-/**
- * 功能：交换数组中两键值对的值
- * @param $arr
- * @param $a
- * @param $b
- * @return mixed
- */
-function swap_arr($arr,$a,$b)
-{
-    $temp = $arr[$a];//将a变量赋给临时变量
-    $arr[$a] = $arr[$b];//然后将b变量赋给a变量
-    $arr[$b] = $temp;//然后将临时变量temp赋给b变量
-
-    return $arr;
-}
 function testSort($sortName, $arr)
 {
 
@@ -96,9 +92,9 @@ function testSort($sortName, $arr)
     $endtime = microtime(TRUE);
     $totaltime = ($endtime - $begintime);
     $processTime = number_format($totaltime, 7);
-    echo $sortName.':'.$processTime.'s'.'<br />';
-//    print_r($arr);
-//    echo '<br />';
+    echo $sortName.'的运行时间 : '.$processTime.'s'.'<p>';
+    print_r($arr);
+    echo '<p>';
     return $arr;
 }
 
@@ -109,7 +105,6 @@ function testSort($sortName, $arr)
  */
 function isSorted($arr)
 {
-
     for ($i = 0; $i < count($arr)-1; $i++)
             if ($arr[$i] > $arr[$i + 1])
                 return false;
