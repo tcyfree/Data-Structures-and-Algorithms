@@ -1,8 +1,8 @@
 一、文件说明
 =============
 
-## 1.1 辅助函数文件Helper.php 
-
+## 1.1 辅助函数文件 Helper.php 
+[Helper.php ](https://github.com/tcyfree/Data-Structures-and-Algorithms/blob/master/Helper.php)
 
 
 1. 数组交换两个值
@@ -24,3 +24,19 @@
 5. 判断一个数组是否为升序排序
 
     isSorted($arr){} 
+    
+    
+## 1.2 排序算法文件 Sort.php    
+[Sort.php](https://github.com/tcyfree/Data-Structures-and-Algorithms/blob/master/Sort.php)
+
+1. 选择排序：每次找剩下最小元素，每次交换一对元素。
+
+    selectionSort($arr){} 
+    
+2. 插入排序：寻找元素arr[i]合适的插入位置，使索引数组中下标为'i'之前的元素有序
+
+    insertionSort($arr){}    
+
+3. 希尔排序：经测试希尔排序是普通插入排序的50倍,'改进版'插入排序的10倍  
+
+    shellSort($arr){}  
