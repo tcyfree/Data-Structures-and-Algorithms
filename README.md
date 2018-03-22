@@ -40,3 +40,9 @@
 3. 希尔排序：经测试希尔排序是普通插入排序的50倍,'改进版'插入排序的10倍  
 
     shellSort($arr){}  
+
+## 1.3 测试文件testSort.php
+[testSort.php](https://github.com/tcyfree/Data-Structures-and-Algorithms/blob/master/testSort.php)
+
+    
+    
